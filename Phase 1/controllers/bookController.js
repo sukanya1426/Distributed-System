@@ -77,6 +77,11 @@ class BookController {
       res.status(500).json({ message: 'Internal server error', error: error.message });
     }
   }
+  // Add this method in BookController for internal logic use
+static async isBookAvailable(book_id) {
+  const book = await Book.findById(book_id);
+  return book && book.available_copies > 0 ? book : null;
+}
 
   static async checkBookAvailability(req, res) {
     try {

@@ -46,6 +46,14 @@ class UserController {
       res.status(500).json({ message: 'Internal server error', error: error.message });
     }
   }
+  static async getUserCount(){
+        return await User.countDocuments();
+    }
+
+  static async findUserById(id) {
+  return await User.findById(id);
+}
+
 }
 
 export default UserController;

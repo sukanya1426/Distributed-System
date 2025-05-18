@@ -1,24 +1,24 @@
 import Loan from '../models/Loan.js';
-import User from '../models/User.js';
-import Book from '../models/Book.js';
+// import User from '../models/User.js';
+// import Book from '../models/Book.js';
 import BookController from './bookController.js';
+import UserController from './userController.js';
 
 class LoanController {
   static async createLoan(req, res) {
     try {
       const { user_id, book_id, due_date } = req.body;
 
-      // Validate user
-      const user = await User.findById(user_id);
+      const user = await UserController.findUserById(user_id);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
 
-      // Check book availability
-      const book = await Book.findById(book_id);
-      if (!book || book.available_copies <= 0) {
-        return res.status(400).json({ message: 'Book not available' });
-      }
+      const book = await BookController.isBookAvailable(book_id);
+     if (!book) {
+  return res.status(400).json({ message: 'Book not available' });
+}
+
 
       // Create loan
       const loan = await Loan.create({

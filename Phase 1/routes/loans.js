@@ -9,5 +9,6 @@ loanRouter.put('/:id/return', LoanController.returnLoan);
 loanRouter.get('/overdue', LoanController.getOverdueLoans);
 loanRouter.get('/user/:user_id', LoanController.getLoansByUser);
 loanRouter.put('/:id/extend', LoanController.extendLoan);
+// loanRouter.get('/stats', LoanController.getStatsOverview);
 
 export default loanRouter;
