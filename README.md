@@ -68,11 +68,3 @@ All services follow RESTful design:
 
 ---
 
-## 🛠️ Getting Started
-
-### 🔧 Run Monolithic Version
-
-```bash
-cd monolith
-npm install
-npm start
