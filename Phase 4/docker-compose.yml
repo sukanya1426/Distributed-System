@@ -1,0 +1,50 @@
+services:
+  user-service:
+    build: ./User-Service
+    image: user-service
+    container_name: user-service-container
+    ports:
+      - "8081:8081"
+    environment:
+      - PORT=8081
+    networks:
+      - smart-library-network
+
+  book-service:
+    build: ./Book-Service
+    image: book-service
+    container_name: book-service-container
+    ports:
+      - "8082:8082"
+    environment:
+      - PORT=8082
+    networks:
+      - smart-library-network
+
+  loan-service:
+    build: ./Loan-Service
+    image: loan-service
+    container_name: loan-service-container
+    ports:
+      - "8083:8083"
+    environment:
+      - PORT=8083
+    networks:
+      - smart-library-network
+
+  nginx:
+    build: ./nginx
+    image: nginx-smart-library
+    container_name: nginx-container
+    ports:
+      - "80:80"
+    depends_on:
+      - user-service
+      - book-service
+      - loan-service
+    networks:
+      - smart-library-network
+
+networks:
+  smart-library-network:
+    driver: bridge

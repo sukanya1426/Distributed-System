@@ -1,0 +1,39 @@
+server {
+    listen 80;
+    server_name localhost;
+
+    location /api/users {
+        proxy_pass http://user-service-container:8081;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /api/books {
+        proxy_pass http://book-service-container:8082;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /api/loans {
+        proxy_pass http://loan-service-container:8083;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    error_page 404 /404.html;
+    error_page 502 503 504 /50x.html;
+    location = /404.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
+    location = /50x.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
+
+    access_log /var/log/nginx/smart-library-access.log;
+    error_log /var/log/nginx/smart-library-error.log;
+}
