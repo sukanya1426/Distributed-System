@@ -61,8 +61,8 @@ All services follow RESTful design:
 
 ## 🏗️ Tech Stack
 
-- **Backend**: Node.js / Express.js
-- **Database**: PostgreSQL / MySQL (Monolith), Separate DBs for Microservices
+- **Backend**: Node.js 
+- **Database**: Mongodb (Monolith), Separate DBs for Microservices
 - **Containerization**: Docker 
 - **DevOps**: GitHub Actions, Docker Compose (optional)
 
