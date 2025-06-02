@@ -20,7 +20,7 @@ class LoanController {
 }
 
 
-      // Create loan
+      
       const loan = await Loan.create({
         user_id,
         book_id,
@@ -29,7 +29,7 @@ class LoanController {
         status: 'ACTIVE',
       });
 
-      // Decrement book copies
+  
       await BookController.decrementBookCopies(book_id);
 
       res.status(201).json({ message: 'Loan created successfully', loan });

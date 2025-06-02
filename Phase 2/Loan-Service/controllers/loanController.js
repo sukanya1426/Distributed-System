@@ -58,7 +58,7 @@ class LoanController {
         return res.status(503).json({ message: 'Book Service unavailable' });
       }
 
-      // Update book availability
+     
       try {
         await bookAvailabilityBreaker.fire(`${BOOK_SERVICE_URL}/api/books/${book_id}/availability`, {
           operation: 'decrement',
