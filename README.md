@@ -32,3 +32,47 @@ The system is restructured into 3 independent services, each with its own databa
 - 🌐 Inter-service communication via HTTP/REST (synchronous)
 - 🔐 Services validate external dependencies (e.g., Loan Service checks User and Book exist via REST)
 
+### 🔹 Phase 3: Infrastructure & DevOps
+
+> _This phase includes optional but highly recommended DevOps practices._
+
+- 🐳 **Dockerized Microservices**
+  - Each service has its own Dockerfile
+  - Unified via a `docker-compose.yml`
+- 📡 **API Gateway / Reverse Proxy** 
+- ⚙️ **CI/CD Setup** (Optional)
+  - GitHub Actions for automated testing and deployment
+- ☁️ **Deployment-Ready**
+  - Can be deployed locally or to any cloud container platform
+
+---
+
+## 🧪 API Documentation
+
+All services follow RESTful design:
+- ✅ Standard HTTP methods (`GET`, `POST`, `PUT`, `DELETE`)
+- 🧾 JSON request/response format
+- 📍 Status codes for success/errors
+- 🗂 Organized under `/api/{resource}` pattern
+
+
+
+---
+
+## 🏗️ Tech Stack
+
+- **Backend**: Node.js / Express.js
+- **Database**: PostgreSQL / MySQL (Monolith), Separate DBs for Microservices
+- **Containerization**: Docker 
+- **DevOps**: GitHub Actions, Docker Compose (optional)
+
+---
+
+## 🛠️ Getting Started
+
+### 🔧 Run Monolithic Version
+
+```bash
+cd monolith
+npm install
+npm start
